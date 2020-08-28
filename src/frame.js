@@ -3,15 +3,25 @@ import cx from 'classnames';
 import { css } from 'glamor';
 import { node, object, string, number, func } from 'prop-types';
 
-import Frame from 'react-frame-component';
+import Frame, { FrameContextConsumer } from 'react-frame-component';
+
+import { create } from 'jss';
+import { jssPreset } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 
 const iframeClass = css({
   border: 'none',
   width: '100%',
   height: '100%',
   background: 'white',
-  borderRadius: '0px',
+  borderRadius: '4px',
+  border: '1px solid #b9b9b9',
   boxShadow: 'rgba(0, 0, 0, 0.15) -6px 6px 15px',
+  fontFamily: '"IBM Plex Sans"',
+  fontStyle: 'normal',
+  fontWeight: 400,
+  margin: '0px',
 });
 
 const maskClass = css({
@@ -60,6 +70,50 @@ const containerMinimizedClass = css({
 
 const FRAME_TOGGLE_FUNCTION = 'chromeIframeSheetToggle';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#262626',
+    },
+    secondary: {
+      main: '#dedede',
+    },
+    background: {
+      default: '#dedede',
+      paper: '#ffffff',
+    },
+  },
+  typography: {
+    fontFamily: [
+      '"IBM Plex Sans"',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+  },
+});
+
+const FrameHead = (props) => {
+  return (
+    <div>
+      <meta charSet='utf-8' />
+      <title>Prefix iFrame</title>
+      <meta name='viewport' content='width=device-width,initial-scale=1' />
+      <base target='_parent' />
+      <link
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap'
+      />
+      <link
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/icon?family=Material+Icons'
+      />
+    </div>
+  );
+};
+
 export class PXFrame extends Component {
   render() {
     const { isVisible, isMinimized } = this.state;
@@ -74,6 +128,7 @@ export class PXFrame extends Component {
       iframeStyle,
       children,
       containerChildren,
+      muiTheme,
     } = this.props;
 
     return (
@@ -107,9 +162,26 @@ export class PXFrame extends Component {
             style={iframeStyle}
             ref={(frame) => (this.frame = frame)}
             onLoad={this.onLoad}
+            head={<FrameHead />}
           >
-            <h1>Prefix Finder</h1>
-            {children}
+            <FrameContextConsumer>
+              {
+                // Callback is invoked with iframe's window and document instances
+                ({ document, window }) => {
+                  const jss = create({
+                    plugins: [...jssPreset().plugins],
+                    insertionPoint: document.head,
+                  });
+                  return (
+                    <StylesProvider jss={jss}>
+                      <ThemeProvider theme={muiTheme || theme}>
+                        {children}
+                      </ThemeProvider>
+                    </StylesProvider>
+                  );
+                }
+              }
+            </FrameContextConsumer>
           </Frame>
         </div>
       </div>

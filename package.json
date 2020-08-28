@@ -1,6 +1,6 @@
 {
   "name": "px-chrome-sidebar",
-  "version": "0.1.1",
+  "version": "0.2.2",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -9,9 +9,11 @@
     "dev": "fly"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "classnames": "^2.2.5",
     "debug": "^2.6.6",
     "glamor": "^2.20.25",
+    "jss": "^10.4.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-frame-component": "^4.1.3"
