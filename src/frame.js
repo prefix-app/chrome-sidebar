@@ -46,7 +46,7 @@ const containerClass = css({
   height: '100%',
   width: '65%',
   maxWidth: '400px',
-  padding: '8px',
+  padding: '12px',
   boxSizing: 'border-box',
   transform: 'translateX(100%)',
   transition: 'transform .45s cubic-bezier(0, 0, 0.3, 1)',
@@ -105,10 +105,6 @@ const FrameHead = (props) => {
       <link
         rel='stylesheet'
         href='https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap'
-      />
-      <link
-        rel='stylesheet'
-        href='https://fonts.googleapis.com/icon?family=Material+Icons'
       />
     </div>
   );
