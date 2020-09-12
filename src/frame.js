@@ -11,15 +11,15 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 
 const iframeClass = css({
-  border: 'none',
-  width: '100%',
-  height: '100%',
+  border: 'none !important',
+  width: '100% !important',
+  height: '100% !important',
   background: 'white',
   borderRadius: '4px',
   border: '1px solid #b9b9b9',
   boxShadow: 'rgba(0, 0, 0, 0.15) -6px 6px 15px',
   fontFamily: '"IBM Plex Sans"',
-  fontStyle: 'normal',
+  fontStyle: 'normal !important',
   fontWeight: 400,
   margin: '0px',
 });
@@ -32,7 +32,7 @@ const maskClass = css({
   top: 0,
   left: 0,
   cursor: 'pointer',
-  zIndex: '9999',
+  zIndex: '2147483645',
 });
 
 const maskVisibleClass = css({
@@ -45,12 +45,12 @@ const containerClass = css({
   right: '0px',
   height: '100%',
   width: '65%',
-  maxWidth: '400px',
+  maxWidth: '480px',
   padding: '12px',
   boxSizing: 'border-box',
   transform: 'translateX(100%)',
   transition: 'transform .45s cubic-bezier(0, 0, 0.3, 1)',
-  zIndex: 10000,
+  zIndex: 2147483646,
 });
 
 const containerVisibleClass = css({
@@ -130,6 +130,7 @@ export class PXFrame extends Component {
     return (
       <div>
         <div
+          id='studio-elements-mask'
           className={cx({
             [maskClass]: true,
             [maskVisibleClass]: !isMinimized,
@@ -141,6 +142,7 @@ export class PXFrame extends Component {
         />
 
         <div
+          id='studio-elements-sidebar'
           className={cx({
             [containerClass]: true,
             [containerVisibleClass]: isVisible,
