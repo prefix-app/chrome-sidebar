@@ -10,6 +10,9 @@ import { jssPreset } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 
+const minimizedTranslateX = 90;
+const minimizedTranslateXOnHover = 88;
+
 const iframeClass = css({
   border: 'none !important',
   width: '100% !important',
@@ -59,9 +62,9 @@ const containerVisibleClass = css({
 
 const containerMinimizedClass = css({
   'cursor': 'pointer',
-  'transform': 'translateX(94%)',
+  'transform': `translateX(${minimizedTranslateX}%)`,
   ':hover': {
-    transform: 'translateX(92%)',
+    transform: `translateX(${minimizedTranslateXOnHover}%)`,
   },
   '& > iframe': {
     pointerEvents: 'none',
