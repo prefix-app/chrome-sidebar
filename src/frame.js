@@ -21,7 +21,7 @@ const iframeClass = css({
   borderRadius: '4px',
   border: '1px solid #b9b9b9',
   boxShadow: 'rgba(0, 0, 0, 0.15) -6px 6px 15px',
-  fontFamily: '"IBM Plex Sans"',
+  fontFamily: '"Inter"',
   fontStyle: 'normal !important',
   fontWeight: 400,
   margin: '0px',
@@ -88,7 +88,7 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: [
-      '"IBM Plex Sans"',
+      '"Inter"',
       '"Segoe UI"',
       'Roboto',
       '"Helvetica Neue"',
@@ -107,7 +107,7 @@ const FrameHead = (props) => {
       <base target='_parent' />
       <link
         rel='stylesheet'
-        href='https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap'
+        href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
       />
     </div>
   );
