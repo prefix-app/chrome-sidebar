@@ -1,0 +1,35 @@
+name: Publish
+on:
+  push:
+    branches: 
+      - master
+      
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16 # Need for npm >=7.7
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build Plugin
+        run: npm run build
+        
+      - name:  'Automated Version Bump'
+        uses:  'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag-prefix:  'v'
+          
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: https://npm.pkg.github.com
+
