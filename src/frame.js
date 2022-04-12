@@ -21,7 +21,7 @@ const iframeClass = css({
   borderRadius: '4px',
   border: '1px solid #b9b9b9',
   boxShadow: 'rgba(0, 0, 0, 0.15) -6px 6px 15px',
-  fontFamily: '"Inter"',
+  fontFamily: '"Inter", Arial, sans-serif',
   fontStyle: 'normal !important',
   fontWeight: 400,
   margin: '0px',
