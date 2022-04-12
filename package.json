@@ -1,5 +1,5 @@
 {
-  "name": "px-chrome-sidebar",
+  "name": "@prefix-app/px-chrome-sidebar",
   "version": "0.2.12",
   "main": "dist/index.js",
   "license": "MIT",
