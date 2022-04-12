@@ -1,6 +1,6 @@
 {
   "name": "px-chrome-sidebar",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
